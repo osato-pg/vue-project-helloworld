@@ -3,7 +3,7 @@
     <keep-alive>
       <component :is="currentComponent"></component>
     </keep-alive>
-    <button class="hide" @click="backComponent">前へ戻る</button>
+    <button v-if="show" @click="backComponent">前へ戻る</button>
     <button @click="aheadComponent">次へすすむ</button>
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       currentComponent: "CostomerInfo",
+      show: false,
     };
   },
   components: {
@@ -28,6 +29,7 @@ export default {
     aheadComponent() {
       if (this.currentComponent === "CostomerInfo") {
         this.currentComponent = "DetailInfo";
+        this.show = true;
       } else if (this.currentComponent === "DetailInfo") {
         this.currentComponent = "FreeField";
       }
@@ -35,7 +37,7 @@ export default {
     backComponent() {
       if (this.currentComponent === "DetailInfo") {
         this.currentComponent = "CostomerInfo";
-
+        this.show= false;
       } else if (this.currentComponent === "FreeField") {
         this.currentComponent = "DetailInfo";
       }
