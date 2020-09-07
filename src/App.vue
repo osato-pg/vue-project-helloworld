@@ -1,27 +1,46 @@
 <template>
-  <div id="app">
-    <HelloWorld msg="Hello World!"/>
+  <div>
+    <keep-alive>
+      <component :is="currentComponent"></component>
+    </keep-alive>
+    <button class="hide" @click="backComponent">前へ戻る</button>
+    <button @click="aheadComponent">次へすすむ</button>
   </div>
 </template>
-
+Ï
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CostomerInfo from "./components/CostomerInfo.vue";
+import DetailInfo from "./components/DetailInfo.vue";
+import FreeField from "./components/FreeField.vue";
 
 export default {
-  name: 'App',
+  data() {
+    return {
+      currentComponent: "CostomerInfo",
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    CostomerInfo,
+    DetailInfo,
+    FreeField,
+  },
+  methods: {
+    aheadComponent() {
+      if (this.currentComponent === "CostomerInfo") {
+        this.currentComponent = "DetailInfo";
+      } else if (this.currentComponent === "DetailInfo") {
+        this.currentComponent = "FreeField";
+      }
+    },
+    backComponent() {
+      if (this.currentComponent === "DetailInfo") {
+        this.currentComponent = "CostomerInfo";
+
+      } else if (this.currentComponent === "FreeField") {
+        this.currentComponent = "DetailInfo";
+      }
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
