@@ -10,9 +10,20 @@
     <label for="women">女性</label>
     <p>生年月日</p>
 
-    <select v-model="selected">
+    <select>
       <option v-for="(year, index) in list" :key="index" :value="year">{{ year }}年</option>
     </select>
+    <span>年</span>
+    <select v-model="selectedMonth">
+      <option v-for="(month,index) in 12" :key="index" :value="month">{{month}}</option>
+    </select>
+    <span>月</span>
+    <select v-model="selectedDay">
+      <option v-for="(day,index) in 31" :key="index" :value="day">{{day}}</option>
+    </select>
+    <span>日</span>
+    
+    
 
   </div>
 </template>
@@ -22,9 +33,10 @@ export default {
   data() {
     return {
       gender: "",
-      selected: null,
       list: [],
       num: 100,
+      selectedMonth:'1',
+      selectedDay: '1',
     };
   },
   created() {
@@ -32,7 +44,6 @@ export default {
     for (let i = 0; i < this.num; i++) {
       this.list.unshift(year - i)
   }
-  this.selected = this.list[this.list.length * 0.6]
   }
 }
 </script>
