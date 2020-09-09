@@ -1,17 +1,20 @@
 <template>
   <div>
-    <keep-alive>
-      <component :is="currentComponent"></component>
-    </keep-alive>
-    <button v-if="show" @click="backComponent">前へ戻る</button>
-    <button @click="aheadComponent">次へすすむ</button>
+    <div class="box">
+      <keep-alive>
+        <component :is="currentComponent"></component>
+      </keep-alive>
+    </div>
+    <button class="button is-primary" v-if="show" @click="backComponent">前へ戻る</button>
+    <button class="button is-primary" @click="aheadComponent">次へすすむ</button>
   </div>
 </template>
-Ï
+
 <script>
 import CostomerInfo from "./components/CostomerInfo.vue";
 import DetailInfo from "./components/DetailInfo.vue";
 import FreeField from "./components/FreeField.vue";
+import "bulma/css/bulma.css";
 
 export default {
   data() {
@@ -37,7 +40,7 @@ export default {
     backComponent() {
       if (this.currentComponent === "DetailInfo") {
         this.currentComponent = "CostomerInfo";
-        this.show= false;
+        this.show = false;
       } else if (this.currentComponent === "FreeField") {
         this.currentComponent = "DetailInfo";
       }
@@ -45,4 +48,3 @@ export default {
   },
 };
 </script>
-

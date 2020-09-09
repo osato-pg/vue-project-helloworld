@@ -10,15 +10,15 @@
     <label for="women">女性</label>
     <p>生年月日</p>
 
-    <select>
+    <select class="select">
       <option v-for="(year, index) in list" :key="index" :value="year">{{ year }}年</option>
     </select>
     <span>年</span>
-    <select v-model="selectedMonth">
+    <select class="select" v-model="selectedMonth">
       <option v-for="(month,index) in 12" :key="index" :value="month">{{month}}</option>
     </select>
     <span>月</span>
-    <select v-model="selectedDay">
+    <select class="select" v-model="selectedDay">
       <option v-for="(day,index) in 31" :key="index" :value="day">{{day}}</option>
     </select>
     <span>日</span>
