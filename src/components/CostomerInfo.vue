@@ -21,10 +21,9 @@
     <select class="select" v-model="selectedDay">
       <option v-for="(day,index) in 31" :key="index" :value="day">{{day}}</option>
     </select>
-    <span>日</span>
-    
-    
+    <span>日</span><br>
 
+    <button class="button is-primary" @click="toDetail">次へすすむ</button>
   </div>
 </template>
 
@@ -32,18 +31,23 @@
 export default {
   data() {
     return {
-      gender: "",
+      gender: '',
       list: [],
       num: 100,
-      selectedMonth:'1',
+      selectedMonth: '1',
       selectedDay: '1',
     };
+  },
+  methods: {
+    toDetail() {
+      this.$router.push("Detail");
+    },
   },
   created() {
     const year = new Date().getFullYear();
     for (let i = 0; i < this.num; i++) {
-      this.list.unshift(year - i)
-  }
-  }
-}
+      this.list.unshift(year - i);
+    }
+  },
+};
 </script>

@@ -5,27 +5,33 @@
     </h1>
     <section>
       <p>現在生命保険に加入されていますか？</p>
-      <input @click="appearHos" type="radio" value="はい" id="insuranceYes" v-model="insurance" />
+      <input @change="appearHos" type="radio" value="はい" id="insuranceYes" v-model="insurance" />
       <label for="insuranceYes">はい</label>
-      <input @click="appearHos" type="radio" value="いいえ" id="insuranceNo" v-model="insurance" />
+      <input @change="appearHos" type="radio" value="いいえ" id="insuranceNo" v-model="insurance" />
       <label for="insuranceNo">いいえ</label>
     </section>
 
-    <section v-if="show.hospital">
-      <p>現在入院中ですか。または３ヶ月以内に医師の診察・検査の結果、入院手術を進められたことはありますか。</p>
-      <input @click="appearEx" type="radio" value="はい" id="hospitalYes" v-model="hospital" />
-      <label for="hospitalYes">はい</label>
-      <input @click="appearEx" type="radio" value="いいえ" id="hospitalNo" v-model="hospital" />
-      <label for="hospitalNo">いいえ</label>
-    </section>
+    <transition appear>
+      <section v-if="isShowHospital">
+        <p>現在入院中ですか。または３ヶ月以内に医師の診察・検査の結果、入院手術を進められたことはありますか。</p>
+        <input @change="appearEx" type="radio" value="はい" id="hospitalYes" v-model="hospital" />
+        <label for="hospitalYes">はい</label>
+        <input @change="appearEx" type="radio" value="いいえ" id="hospitalNo" v-model="hospital" />
+        <label for="hospitalNo">いいえ</label>
+      </section>
+    </transition>
 
-    <section v-if="show.experience">
-      <p>過去5年以内に、病気やケガで手術をうけたことまたは継続して7日以上の入院をしたことがありますか。</p>
-      <input type="radio" value="はい" id="experienceYes" v-model="experience" />
-      <label for="experienceYes">はい</label>
-      <input type="radio" value="いいえ" id="experienceNo" v-model="experience" />
-      <label for="experienceNo">いいえ</label>
-    </section>
+    <transition appear>
+      <section v-if="isShowExperience">
+        <p>過去5年以内に、病気やケガで手術をうけたことまたは継続して7日以上の入院をしたことがありますか。</p>
+        <input type="radio" value="はい" id="experienceYes" v-model="experience" />
+        <label for="experienceYes">はい</label>
+        <input type="radio" value="いいえ" id="experienceNo" v-model="experience" />
+        <label for="experienceNo">いいえ</label>
+      </section>
+    </transition>
+     <button class="button is-primary" @click="toCostomer">前へ戻る</button>
+     <button class="button is-primary" @click="toFree">次へすすむ</button>
   </div>
 </template>
 
@@ -33,22 +39,26 @@
 export default {
   data() {
     return {
-      insurance: "",
-      hospital:'',
-      experience:'',
-      show: {
-        hospital: false,
-        experience: false,
-      }
+      insurance: '',
+      hospital: '',
+      experience: '',
+      isShowHospital: false,
+      isShowExperience: false,
     };
   },
   methods: {
-    appearHos(){
-      this.show.hospital= true;
+    appearHos() {
+      this.isShowHospital = true;
     },
-    appearEx(){
-      this.show.experience= true;
-    }
-  }
+    appearEx() {
+      this.isShowExperience = true;
+    },
+    toCostomer() {
+      this.$router.push("/");
+    },
+    toFree() {
+      this.$router.push("Free");
+    },
+  },
 };
 </script>
