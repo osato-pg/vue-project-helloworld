@@ -33,7 +33,6 @@ export default {
     return {
       gender: '',
       list: [],
-      num: 100,
       selectedMonth: '1',
       selectedDay: '1',
     };
@@ -45,7 +44,7 @@ export default {
   },
   created() {
     const year = new Date().getFullYear();
-    for (let i = 0; i < this.num; i++) {
+    for (let i = 0; i < 100; i++) {
       this.list.unshift(year - i);
     }
   },
