@@ -30,8 +30,8 @@
         <label for="experienceNo">いいえ</label>
       </section>
     </transition>
-     <button class="button is-primary" @click="toCostomer">前へ戻る</button>
-     <button class="button is-primary" @click="toFree">次へすすむ</button>
+    <button class="button is-primary" @click="toCostomer">前へ戻る</button>
+    <button class="button is-primary" @click="toFree">次へすすむ</button>
   </div>
 </template>
 
@@ -39,12 +39,35 @@
 export default {
   data() {
     return {
-      insurance: '',
-      hospital: '',
-      experience: '',
       isShowHospital: false,
       isShowExperience: false,
     };
+  },
+  computed: {
+    insurance: {
+      get() {
+        return this.$store.getters.insurance;
+      },
+      set(value) {
+        this.$store.commit("updateInsurance", value);
+      }
+    },
+    hospital: {
+      get() {
+        return this.$store.getters.hospital;
+      },
+      set(value) {
+        this.$store.commit("updateHospital", value);
+      }
+    },
+    experience: {
+      get() {
+        return this.$store.getters.experience;
+      },
+      set(value) {
+        this.$store.commit("updateExperience", value);
+      }
+    },
   },
   methods: {
     appearHos() {

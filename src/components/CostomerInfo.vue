@@ -4,13 +4,13 @@
       <span>STEP1</span> お客様の情報を入力してください
     </h1>
     <p>性別</p>
-    <input type="radio" value="男性" id="man" v-model="gender" />
+    <input type="radio" value="男性" id="man" v-model="genderSelect"/>
     <label for="man">男性</label>
-    <input type="radio" value="女性" id="women" v-model="gender" />
+    <input type="radio" value="女性" id="women" v-model="genderSelect" />
     <label for="women">女性</label>
     <p>生年月日</p>
 
-    <select class="select">
+    <select class="select" v-model="selectedYear">
       <option v-for="(year, index) in list" :key="index" :value="year">{{ year }}年</option>
     </select>
     <span>年</span>
@@ -22,7 +22,6 @@
       <option v-for="(day,index) in 31" :key="index" :value="day">{{day}}</option>
     </select>
     <span>日</span><br>
-
     <button class="button is-primary" @click="toDetail">次へすすむ</button>
   </div>
 </template>
@@ -31,11 +30,42 @@
 export default {
   data() {
     return {
-      gender: '',
       list: [],
-      selectedMonth: '1',
-      selectedDay: '1',
     };
+  },
+  computed: {
+    genderSelect: {
+      get(){
+      return this.$store.getters.genderSelect;
+    },
+      set(value){
+        this.$store.commit('updateGenderSelect',value)
+      }
+    },
+    selectedYear: {
+      get(){
+      return this.$store.getters.selectedYear;
+    },
+      set(value){
+        this.$store.commit('updateSelectedYear',value)
+      }
+    },
+    selectedMonth: {
+      get(){
+      return this.$store.getters.selectedMonth;
+    },
+      set(value){
+        this.$store.commit('updateSelectedMonth',value)
+      }
+    },
+    selectedDay: {
+      get(){
+      return this.$store.getters.selectedDay;
+    },
+      set(value){
+        this.$store.commit('updateSelectedDay',value)
+      }
+    },
   },
   methods: {
     toDetail() {
