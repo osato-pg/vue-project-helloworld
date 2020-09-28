@@ -19,18 +19,21 @@ export default {
       return this.$store.getters.freeComment;
     },
       set(value){
-        this.$store.commit('updateFreeComment',value)
+        this.$store.commit({type:'updateState',freeComment:value})
       }
     }
   },
   methods: {
     toDetail() {
-      this.$router.push("/Detail");
+      this.$router.push('/Detail');
     },
     toResult() {
-      this.$router.push("/Result");
+      this.$router.push('/Result');
     }
   }
 }
 </script>
 
+<style lang="stylus">
+
+</style>

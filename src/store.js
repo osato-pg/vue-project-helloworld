@@ -25,29 +25,40 @@ export default new Vuex.Store({
     experience: state => state.experience,
   },
   mutations: {
-    updateFreeComment(state,newComment) {
-      state.freeComment = newComment
-    },
-    updateGenderSelect(state,newGender) {
-      state.genderSelect = newGender
-    },
-    updateSelectedYear(state,newYear) {
-      state.selectedYear = newYear
-    },
-    updateSelectedMonth(state,newMonth) {
-      state.selectedMonth = newMonth
-    },
-    updateSelectedDay(state,newDay) {
-      state.selectedDay = newDay
-    },
-    updateInsurance(state,newInsurance) {
-      state.insurance = newInsurance
-    },
-    updateHospital(state,newHospital) {
-      state.hospital = newHospital
-    },
-    updateExperience(state,newExperience) {
-      state.experience = newExperience
-    },
+    updateState(state,newState){
+      state.freeComment=newState.freeComment;
+      state.genderSelect = newState.newGender;
+      state.selectedYear = newState.newYear;
+      state.selectedMonth = newState.newMonth;
+      state.selectedDay = newState.newDay;
+      state.insurance = newState.newInsurance;
+      state.hospital = newState.newHospital;
+      state.experience = newState.newExperience;
+    }
+
+    // updateFreeComment(state,newComment) {
+    //   state.freeComment = newComment
+    // },
+    // updateGenderSelect(state,newGender) {
+    //   state.genderSelect = newGender
+    // },
+    // updateSelectedYear(state,newYear) {
+    //   state.selectedYear = newYear
+    // },
+    // updateSelectedMonth(state,newMonth) {
+    //   state.selectedMonth = newMonth
+    // },
+    // updateSelectedDay(state,newDay) {
+    //   state.selectedDay = newDay
+    // },
+    // updateInsurance(state,newInsurance) {
+    //   state.insurance = newInsurance
+    // },
+    // updateHospital(state,newHospital) {
+    //   state.hospital = newHospital
+    // },
+    // updateExperience(state,newExperience) {
+    //   state.experience = newExperience
+    // },
   }
 });

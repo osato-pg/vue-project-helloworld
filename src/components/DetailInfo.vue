@@ -77,10 +77,10 @@ export default {
       this.isShowExperience = true;
     },
     toCostomer() {
-      this.$router.push("/");
+      this.$router.push('/');
     },
     toFree() {
-      this.$router.push("Free");
+      this.$router.push('Free');
     },
   },
 };

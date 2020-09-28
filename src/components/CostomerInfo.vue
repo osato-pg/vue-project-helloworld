@@ -15,11 +15,11 @@
     </select>
     <span>年</span>
     <select class="select" v-model="selectedMonth">
-      <option v-for="(month,index) in 12" :key="index" :value="month">{{month}}</option>
+      <option v-for="(month, index) in monthNumber" :key="index" :value="month">{{month}}</option>
     </select>
     <span>月</span>
     <select class="select" v-model="selectedDay">
-      <option v-for="(day,index) in 31" :key="index" :value="day">{{day}}</option>
+      <option v-for="(day, index) in dayNumber" :key="index" :value="day">{{day}}</option>
     </select>
     <span>日</span><br>
     <button class="button is-primary" @click="toDetail">次へすすむ</button>
@@ -31,6 +31,8 @@ export default {
   data() {
     return {
       list: [],
+      monthNumber:12,
+      dayNumber:31,
     };
   },
   computed: {
@@ -39,7 +41,7 @@ export default {
       return this.$store.getters.genderSelect;
     },
       set(value){
-        this.$store.commit('updateGenderSelect',value)
+        this.$store.commit({type:'updateState',newGender:value})
       }
     },
     selectedYear: {
@@ -47,7 +49,7 @@ export default {
       return this.$store.getters.selectedYear;
     },
       set(value){
-        this.$store.commit('updateSelectedYear',value)
+        this.$store.commit({type:'updateState',newYear:value})
       }
     },
     selectedMonth: {
@@ -55,7 +57,7 @@ export default {
       return this.$store.getters.selectedMonth;
     },
       set(value){
-        this.$store.commit('updateSelectedMonth',value)
+        this.$store.commit({type:'updateState',neMonth:value})
       }
     },
     selectedDay: {
@@ -63,13 +65,13 @@ export default {
       return this.$store.getters.selectedDay;
     },
       set(value){
-        this.$store.commit('updateSelectedDay',value)
+        this.$store.commit({type:'updateSelectedDay',newDay:value})
       }
     },
   },
   methods: {
     toDetail() {
-      this.$router.push("Detail");
+      this.$router.push('Detail');
     },
   },
   created() {
