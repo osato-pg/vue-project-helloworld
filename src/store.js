@@ -26,14 +26,17 @@ export default new Vuex.Store({
   },
   mutations: {
     updateState(state,newState){
-      state.freeComment=newState.freeComment;
-      state.genderSelect = newState.newGender;
-      state.selectedYear = newState.newYear;
-      state.selectedMonth = newState.newMonth;
-      state.selectedDay = newState.newDay;
-      state.insurance = newState.newInsurance;
-      state.hospital = newState.newHospital;
-      state.experience = newState.newExperience;
+      Object.assign(state,newState);
+      console.log(Object.assign(state,newState));
+      // console.log(newState);
+      // state.freeComment=newState.freeComment;
+      // state.genderSelect = newState.newGender;
+      // state.selectedYear = newState.newYear;
+      // state.selectedMonth = newState.newMonth;
+      // state.selectedDay = newState.newDay;
+      // state.insurance = newState.newInsurance;
+      // state.hospital = newState.newHospital;
+      // state.experience = newState.newExperience;
     }
 
     // updateFreeComment(state,newComment) {

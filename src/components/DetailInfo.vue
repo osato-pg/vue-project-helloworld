@@ -49,7 +49,7 @@ export default {
         return this.$store.getters.insurance;
       },
       set(value) {
-        this.$store.commit("updateInsurance", value);
+        this.$store.commit({type:'updateState', insurance:value});
       }
     },
     hospital: {
@@ -57,7 +57,7 @@ export default {
         return this.$store.getters.hospital;
       },
       set(value) {
-        this.$store.commit("updateHospital", value);
+        this.$store.commit({type:'updateState', hospital:value});
       }
     },
     experience: {
@@ -65,7 +65,7 @@ export default {
         return this.$store.getters.experience;
       },
       set(value) {
-        this.$store.commit("updateExperience", value);
+        this.$store.commit({type:'updateState', experience:value});
       }
     },
   },

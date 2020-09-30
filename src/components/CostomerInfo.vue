@@ -41,7 +41,7 @@ export default {
       return this.$store.getters.genderSelect;
     },
       set(value){
-        this.$store.commit({type:'updateState',newGender:value})
+        this.$store.commit({type:'updateState',genderSelect:value})
       }
     },
     selectedYear: {
@@ -49,7 +49,7 @@ export default {
       return this.$store.getters.selectedYear;
     },
       set(value){
-        this.$store.commit({type:'updateState',newYear:value})
+        this.$store.commit({type:'updateState',selectedYear:value})
       }
     },
     selectedMonth: {
@@ -57,7 +57,7 @@ export default {
       return this.$store.getters.selectedMonth;
     },
       set(value){
-        this.$store.commit({type:'updateState',neMonth:value})
+        this.$store.commit({type:'updateState',selectedMonth:value})
       }
     },
     selectedDay: {
@@ -65,7 +65,7 @@ export default {
       return this.$store.getters.selectedDay;
     },
       set(value){
-        this.$store.commit({type:'updateSelectedDay',newDay:value})
+        this.$store.commit({type:'updateState',selectedDay:value})
       }
     },
   },
