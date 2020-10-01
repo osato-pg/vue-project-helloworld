@@ -25,7 +25,7 @@ export default new Vuex.Store({
     experience: state => state.experience,
   },
   mutations: {
-    updateState(state,newState){
+    updateState(state, newState){
       Object.assign(state,newState);
     }
   }
